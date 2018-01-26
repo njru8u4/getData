@@ -17,7 +17,7 @@ def classified(datasheet):
 		tempheader = getheader(temp)
 		
 		if tempheader == 'lat' or tempheader == 'lon' or tempheader == 'locationName' or tempheader == 'stationId' or tempheader == 'obsTime':
-			dataset[tempheader] = getvalue(temp)
+			dataset[tempheader] = getvalue(temp) + ','
 			continue
 		
 		elif tempheader == 'weatherElement':
@@ -33,7 +33,7 @@ def classified(datasheet):
 				val = getheader(temp)
 			val = getvalue(temp)
 			
-			dataset[ele] = val
+			dataset[ele] = val + ','
 			continue
 			
 		elif tempheader == 'parameter':
@@ -48,7 +48,9 @@ def classified(datasheet):
 				temp = f.readline()
 				val = getheader(temp)
 			val = getvalue(temp)
-			dataset[par] = val
+			dataset[par] = val + ','
+			if par == 'TOWN_SN':
+				dataset[par] = val + '\n'
 			
 			continue
 			
@@ -97,13 +99,13 @@ def save(dataset):
 	
 	filename = file + '/' + dataset['stationId'] + time.strftime('-%Y-%m') + '.txt'
 	f = open(filename,'a',encoding = 'UTF-8')
-	temp = ''
-	for k,v in dataset.items():
-		if k != 'TOWN_SN' :
-			temp = temp + v + ',' 
-		elif k == 'TOWN_SN':
-			temp = temp + v + '\n'
-			break
+	temp = dataset['lat'] + dataset['lon'] + dataset['locationName'] + dataset['stationId'] + dataset['obsTime'] + dataset['ELEV'] + dataset['WDIR'] + dataset['WDSD'] + dataset['TEMP'] + dataset['HUMD'] + dataset['PRES'] + dataset['SUN'] + dataset['H_24R'] + dataset['H_FX'] + dataset['H_XD'] + dataset['H_FXT'] + dataset['CITY'] + dataset['CITY_SN'] + dataset['TOWN'] + dataset['TOWN_SN']
+#	for k,v in dataset.items():
+#		if k == 'lat' :
+#			temp = temp + v
+#		elif k == 'TOWN_SN':
+#			temp = temp + v + '\n'
+#			break
 	
 	f.write(temp)
 	f.close()
