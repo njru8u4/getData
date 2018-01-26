@@ -22,7 +22,7 @@ def getData(lastfile):
 
 def timer(n):
 	lastfile = '2018-01-25 12-34-11.txt'
-	while True
+	while True:
 		lastfile = getData(lastfile)
 		
 		time.sleep(n)
