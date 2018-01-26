@@ -103,6 +103,7 @@ def save(dataset):
 			temp = temp + v + ',' 
 		elif k == 'TOWN_SN':
 			temp = temp + v + '\n'
+			break
 	
 	f.write(temp)
 	f.close()
