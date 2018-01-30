@@ -16,8 +16,12 @@ def classified(datasheet):
 		
 		tempheader = getheader(temp)
 		
-		if tempheader == 'lat' or tempheader == 'lon' or tempheader == 'locationName' or tempheader == 'stationId' or tempheader == 'obsTime':
+		if tempheader == 'lat' or tempheader == 'lon' or tempheader == 'locationName' or tempheader == 'obsTime':
 			dataset[tempheader] = getvalue(temp) + ','
+			continue
+		
+		elif tempheader == 'stationId':
+			dataset[tempheader] = getvalue(temp)
 			continue
 		
 		elif tempheader == 'weatherElement':
