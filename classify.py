@@ -103,7 +103,7 @@ def save(dataset):
 	
 	filename = file + '/' + dataset['stationId'] + time.strftime('-%Y-%m') + '.txt'
 	f = open(filename,'a',encoding = 'UTF-8')
-	temp = dataset['lat'] + dataset['lon'] + dataset['locationName'] + dataset['stationId'] + dataset['obsTime'] + dataset['ELEV'] + dataset['WDIR'] + dataset['WDSD'] + dataset['TEMP'] + dataset['HUMD'] + dataset['PRES'] + dataset['SUN'] + dataset['H_24R'] + dataset['H_FX'] + dataset['H_XD'] + dataset['H_FXT'] + dataset['CITY'] + dataset['CITY_SN'] + dataset['TOWN'] + dataset['TOWN_SN']
+	temp = dataset['lat'] + dataset['lon'] + dataset['locationName'] + dataset['stationId'] + ',' + dataset['obsTime'] + dataset['ELEV'] + dataset['WDIR'] + dataset['WDSD'] + dataset['TEMP'] + dataset['HUMD'] + dataset['PRES'] + dataset['SUN'] + dataset['H_24R'] + dataset['H_FX'] + dataset['H_XD'] + dataset['H_FXT'] + dataset['CITY'] + dataset['CITY_SN'] + dataset['TOWN'] + dataset['TOWN_SN']
 #	for k,v in dataset.items():
 #		if k == 'lat' :
 #			temp = temp + v
