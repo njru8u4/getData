@@ -21,7 +21,7 @@ def getData(lastfile):
 		return lastfile
 
 def timer(n):
-	lastfile = '2018-01-25 18-10-07.txt'
+	lastfile = '2018-01-25 12-34-11.txt'
 	while True:
 		lastfile = getData(lastfile)
 		
